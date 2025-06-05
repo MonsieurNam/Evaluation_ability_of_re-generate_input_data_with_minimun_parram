@@ -50,8 +50,8 @@ def load_trained_rnn_model(model_dir: str, state_dict_path: str, max_seq_len_fil
     #    sau đó đọc lại ở đây. Hiện tại, ta sẽ giả định cấu hình này
     #    trùng với cấu hình trong train_rnn.py.
     #    Nếu muốn thay đổi, hãy thay đổi trong cả 2 file.
-    EMBEDDING_DIM = 4
-    HIDDEN_SIZE = 16
+    EMBEDDING_DIM = 32
+    HIDDEN_SIZE = 64
     NUM_LAYERS = 1
 
     model = SimpleRNNModel(
@@ -172,9 +172,9 @@ if __name__ == '__main__':
         end_time = time.time()
         total_inference_time_ms += (end_time - start_time) * 1000
 
-        print("  🔹 Generated Text:")
+        print(" Generated Text:")
         print("  -----------------------------------------------------------")
-        print(generated)
+        print(tokenizer.decode(generated[0].tolist()))
         print("  -----------------------------------------------------------")
 
         # Đánh giá độ chính xác tái tạo
@@ -185,7 +185,7 @@ if __name__ == '__main__':
         else:
             print(f"Tái tạo KHÔNG chính xác (Token Accuracy: {token_acc:.2f}%).")
             print(f"Target:   '{full_target_text}'")
-            print(f"Generated:'{generated}'")
+            print(f"Generated:'{tokenizer.decode(generated[0].tolist())}'")
     
     avg_inference_time_ms = total_inference_time_ms / len(test_cases)
     exact_match_rate = (total_exact_matches / len(test_cases)) * 100

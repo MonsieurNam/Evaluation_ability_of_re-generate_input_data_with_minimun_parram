@@ -56,8 +56,8 @@ if __name__ == '__main__':
 
     # --- Cấu hình mô hình RNN ---
     # Điều chỉnh các giá trị này để tìm số lượng tham số tối thiểu
-    EMBEDDING_DIM = 4 # Kích thước embedding
-    HIDDEN_SIZE = 16  # Kích thước hidden state của LSTM/GRU
+    EMBEDDING_DIM = 32 # Kích thước embedding
+    HIDDEN_SIZE = 64  # Kích thước hidden state của LSTM/GRU
     NUM_LAYERS = 1   # Số lượng lớp LSTM/GRU
 
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
